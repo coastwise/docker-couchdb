@@ -10,13 +10,12 @@ RUN apt-get install -y erlang-dev erlang-manpages erlang-base-hipe \
   erlang-eunit erlang-nox erlang-xmerl erlang-inets libmozjs185-dev \
   libicu-dev libcurl4-gnutls-dev libtool
 
-RUN apt-get -y install git
-RUN cd /usr/local/src ; git clone https://git-wip-us.apache.org/repos/asf/couchdb.git
-RUN cd /usr/local/src/couchdb ; git checkout 1.5.0
+RUN cd /usr/local/src ; wget http://mirror.csclub.uwaterloo.ca/apache/couchdb/source/1.5.0/apache-couchdb-1.5.0.tar.gz
+RUN cd /usr/local/src ; tar xvzf apache-couchdb-1.5.0.tar.gz
 
-RUN cd /usr/local/src/couchdb ; ./configure
-RUN cd /usr/local/src/couchdb ; make
-RUN cd /usr/local/src/couchdb ; make install
+RUN cd /usr/local/src/apache-couchdb-* ; ./configure
+RUN cd /usr/local/src/apache-couchdb-* ; make
+RUN cd /usr/local/src/apache-couchdb-* ; make install
 
 ADD ./docker.ini /usr/local/etc/couchdb/local.d/docker.ini
 
