@@ -1,7 +1,9 @@
 # Docker CouchDB
 
 To run as a named container exposed on port 80:
-    sudo docker run -d -p 80:5984 -name couchdb coastwise/couchdb
+```bash
+sudo docker run -d -p 80:5984 -name couchdb coastwise/couchdb
+```
 
 Exposed Volumes
 * /usr/local/etc/couchdb (config)
