@@ -19,7 +19,9 @@ RUN cd /usr/local/src/apache-couchdb-* ; make install
 
 ADD ./docker.ini /usr/local/etc/couchdb/local.d/docker.ini
 
-EXPOSE 8080
+VOLUME ["/usr/local/etc/couchdb", "/usr/local/etc/couchdb"]
+
+EXPOSE 5984
 
 CMD ["/usr/local/bin/couchdb"]
 
